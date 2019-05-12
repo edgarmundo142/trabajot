@@ -1,0 +1,14 @@
+page-mis-servicios {
+  ion-content{
+    background-image: url("../../assets/imgs/3.png");
+    background-size: cover;
+    text-align: center;
+  }
+  .swiper-slide {
+    overflow-y: scroll;
+    display: block;
+}
+.scroll-content {
+overflow: hidden;
+}
+}

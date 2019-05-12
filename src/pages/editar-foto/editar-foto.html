@@ -1,0 +1,35 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="salir()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+      <ion-item text-center *ngIf="imagenPreview">
+            <img image-center class="circle-pic" [src]="imagenPreview" />
+      </ion-item>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-only outline block color="dark" icon-start (click)="mostrarCamaralib()">
+            <ion-icon name="image" color="morado"></ion-icon>
+              Galería
+          </button>
+        </ion-col>
+        <ion-col>
+          <button ion-button icon-only outline block color="dark" icon-start (click)="mostrarCamara()">
+            <ion-icon name="camera" color="danger"></ion-icon>
+              Cámara
+          </button>
+        </ion-col>
+      </ion-row>
+      <button ion-button block (click)="guardar()" [disabled]="imagenPreview == null" color="verde">
+         Guardar
+      </button>
+  </ion-list>
+</ion-content>

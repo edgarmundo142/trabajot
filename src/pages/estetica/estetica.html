@@ -1,0 +1,200 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Estética</ion-title>
+
+   </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngIf="!estetica.actividad">
+      <ion-card-header>
+        Información General
+       </ion-card-header>
+
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label>Tipo de Servicio</ion-label>
+              <ion-select [(ngModel)]="tipo_servicio" interface="popover">
+                <ion-option value="Baño">Baño</ion-option>
+                <ion-option value="Corte">Corte</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Tamaño</ion-label>
+              <ion-select [(ngModel)]="tamano" interface="popover">
+                <ion-option value="chico">Chico</ion-option>
+                <ion-option value="mediano">Mediano</ion-option>
+                <ion-option value="grande">Grande</ion-option>
+                <ion-option value="gigante">Gigante</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item *ngIf="tipo_servicio == 'Corte'">
+              <ion-label>Longitud de corte</ion-label>
+              <ion-select [(ngModel)]="longitud_corte" interface="popover">
+                <ion-option value="rapar">Rapar</ion-option>
+                <ion-option value="capa fina de pelo">Capa fina de pelo</ion-option>
+                <ion-option value="corte medio">Corte medio</ion-option>
+                <ion-option value="solo despunte">Solo despunte</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label>Cita</ion-label>
+                <ion-datetime displayFormat="DD/MMM/YYYY" pickerFormat="DD/MMM/YYYY" [(ngModel)]="fecha_cita" max="2020" min="2019"
+                              cancelText="Cancelar" doneText="Hecho"></ion-datetime>
+            </ion-item>
+            <ion-item>
+              <ion-label>Hora de cita</ion-label>
+                <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="hora_cita" cancelText="Cancelar" doneText="Hecho"></ion-datetime>
+            </ion-item>
+          </ion-list>
+          </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="tipo_servicio == 'Corte'">
+        <ion-card-header>
+         Descripción de tu servicio
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col>
+              Corte({{longitud_corte}}) y deslanaje de pelo
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Corte de uñas
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Limpieza glándulas perianales
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Limpieza de oídos
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Perfume y adorno(moño/paliacate)
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="tipo_servicio == 'Baño'">
+        <ion-card-header>
+         Descripción de tu servicio
+        </ion-card-header>
+        <ion-card-content>
+          <ion-row>
+            <ion-col>
+              Baño y deslanaje de pelo
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Corte de uñas
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Limpieza glándulas perianales
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Limpieza de oídos
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              Perfume y adorno(moño/paliacate)
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="!estetica.actividad">
+    <ion-card-content>
+            <ion-item>
+            <ion-textarea placeholder="Comentarios adicionales (puedes hacer enfásis en algun servicio p. ej. no quiero perfume y/o corte de uñas mesurado )..." [(ngModel)]="comentarios"></ion-textarea>
+            </ion-item>
+    </ion-card-content>
+    </ion-card>
+
+    <button *ngIf="!estetica.actividad" ion-button block (click)="generarEstetica()" [disabled]="!( (tipo_servicio == 'Baño' && tamano != null &&
+            fecha_cita != null && hora_cita != null) || (tipo_servicio == 'Corte' && tamano != null && fecha_cita != null && hora_cita != null
+            && longitud_corte != null))" color="verde">
+      Confirmar
+    </button>
+
+<!--SOLO SE MUESTRA CUANDO HAY EVENTOS -->
+<ion-card *ngIf="estetica.actividad">
+  <ion-card-header>
+    Información General
+   </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <p>Tipo de servicio</p>
+        </ion-col>
+        <ion-col>
+          {{estetica.tipoServicio}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Tamaño</p>
+        </ion-col>
+        <ion-col>
+          {{estetica.tamano}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Longitud de corte</p>
+        </ion-col>
+        <ion-col>
+          {{estetica.longitudCorte}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Cita</p>
+        </ion-col>
+        <ion-col>
+          {{estetica.fechaCita}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Hora de Cita</p>
+        </ion-col>
+        <ion-col>
+          {{estetica.horaCita}}
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="estetica.actividad">
+    <ion-card-header>
+      Comentarios Adicionales
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+          <ion-textarea
+            disabled
+            readonly
+            [value]="estetica.comentarios">
+          </ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

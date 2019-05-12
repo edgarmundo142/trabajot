@@ -1,0 +1,177 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Pensión</ion-title>
+
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-card *ngIf="!pension.actividad">
+      <ion-card-header>
+        Días en pensión
+       </ion-card-header>
+
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+                <ion-label>Fecha de entrada</ion-label>
+                <ion-datetime displayFormat="DD/MMM/YYYY" pickerFormat="DD/MMM/YYYY" [(ngModel)]="fecha_entrada" max="2020" min="2019"
+                              cancelText="Cancelar" doneText="Hecho"></ion-datetime>
+            </ion-item>
+            <ion-item>
+              <ion-label>Hora de entrada</ion-label>
+                <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="hora_entrada" cancelText="Cancelar" doneText="Hecho"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Fecha de salida</ion-label>
+                <ion-datetime displayFormat="DD/MMM/YYYY" pickerFormat="DD/MMM/YYYY" [(ngModel)]="fecha_salida" max="2020" min="2019"
+                              cancelText="Cancelar" doneText="Hecho"></ion-datetime>
+            </ion-item>
+            <ion-item>
+              <ion-label>Hora de salida</ion-label>
+                <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="hora_salida" cancelText="Cancelar" doneText="Hecho"></ion-datetime>
+            </ion-item>
+          </ion-list>
+          </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="!pension.actividad">
+        <ion-card-header>
+         Rutina diaria
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label>Salidas al baño</ion-label>
+              <ion-select [(ngModel)]="bano" interface="popover">
+                <ion-option value="1">1</ion-option>
+                <ion-option value="2">2</ion-option>
+                <ion-option value="3">3</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Comidas</ion-label>
+              <ion-select [(ngModel)]="comidas" interface="popover">
+                <ion-option value="1">1</ion-option>
+                <ion-option value="2">2</ion-option>
+                <ion-option value="3">3</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Ración de comida</ion-label>
+              <ion-select [(ngModel)]="racion" interface="popover">
+                <ion-option value="1/2 taza">1/2 taza</ion-option>
+                <ion-option value="1 taza">1 taza</ion-option>
+                <ion-option value="1 1/2 taza">1 1/2 taza</ion-option>
+                <ion-option value="2 tazas">2 tazas</ion-option>
+                <ion-option value="2 1/2 tazas">2 1/1 tazas</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="!pension.actividad">
+    <ion-card-content>
+            <ion-item>
+            <ion-textarea placeholder="Cuidados adicionales..." [(ngModel)]="cuidados"></ion-textarea>
+            </ion-item>
+    </ion-card-content>
+    </ion-card>
+
+    <button *ngIf="!pension.actividad" ion-button block (click)="generarPension()" [disabled]="!(fecha_entrada != null && hora_entrada != null &&
+            fecha_salida != null && hora_salida != null && bano != null && comidas != null && racion != null)" color="verde">
+      Confirmar
+    </button>
+
+<!--SOLO SE MUESTRA CUANDO HAY EVENTOS -->
+<ion-card *ngIf="pension.actividad">
+  <ion-card-header>
+    Días en pensión
+   </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <p>Fecha de entrada</p>
+        </ion-col>
+        <ion-col>
+          {{pension.fechaEntrada}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Hora de entrada</p>
+        </ion-col>
+        <ion-col>
+          {{pension.horaEntrada}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Fecha de salida</p>
+        </ion-col>
+        <ion-col>
+          {{pension.fechaSalida}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Hora de salida</p>
+        </ion-col>
+        <ion-col>
+          {{pension.horaSalida}}
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+<ion-card *ngIf="pension.actividad">
+  <ion-card-header>
+    Rutina diaria
+   </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <p>Salidas al baño</p>
+        </ion-col>
+        <ion-col>
+          {{pension.salidasBano}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Comidas</p>
+        </ion-col>
+        <ion-col>
+          {{pension.comidas}}
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p>Ración de comida</p>
+        </ion-col>
+        <ion-col>
+          {{pension.racion}}
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="pension.actividad">
+    <ion-card-header>
+      Cuidados Adicionales
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+          <ion-textarea
+            disabled
+            readonly
+            [value]="pension.cuidados">
+          </ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

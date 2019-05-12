@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Editar cuenta</ion-title>
+<!--    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+-->  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+ <ion-list>
+     <ion-item (click)="editarFoto(fotoCuenta)" text-center>
+       <img class="circle-pic" [src]="usuario.foto" />
+     </ion-item>
+  <ion-list-header>
+    Nombre
+  </ion-list-header>
+  <ion-item (click)="editarDato(nombre)">{{usuario.nombre}}</ion-item>
+  <ion-list-header>
+    Apellido
+  </ion-list-header>
+  <ion-item (click)="editarDato(apellido)">{{usuario.apellidos}}</ion-item>
+  <ion-list-header>
+    Número de teléfono
+  </ion-list-header>
+  <ion-item (click)="editarDato(celular)">{{usuario.celular}}</ion-item>
+  <ion-list-header>
+    Correo electónico
+  </ion-list-header>
+  <ion-item (click)="editarDato(correo)">{{usuario.correo}}</ion-item>
+  <ion-list-header>
+    Contraseña
+  </ion-list-header>
+  <ion-item (click)="editarDato(contra)">{{usuario.contrasena}}</ion-item>
+</ion-list>
+</ion-content>

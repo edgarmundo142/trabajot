@@ -1,0 +1,74 @@
+<ion-content ion-content padding class="animated fadeIn login auth-page">
+  <div >
+
+    <!-- Logo -->
+
+      <img src="../../assets/imgs/4_1.png" alt="logo">
+
+
+    <!-- Login form -->
+
+      <ion-item>
+        <ion-label >
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+        </ion-label>
+        <ion-input type="email" placeholder="email" [(ngModel)]="correo"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+        </ion-label>
+        <ion-input type="password" placeholder="contraseña" [(ngModel)]="contrasena"></ion-input>
+      </ion-item>
+
+
+    <div>
+      <button ion-button icon-start block color="verde" (click)="verificarUsuario()">
+        <ion-icon name="log-in"></ion-icon>
+        Entrar
+      </button>
+      <p text-center ion-text color="dark"><strong>¿Olvidaste la contraseña?</strong></p>
+      <p text-center ion-text color="dark"><strong>O entrar con:</strong></p>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-only outline block color="dark" icon-start>
+              <ion-icon name="logo-facebook" color="primary"></ion-icon>
+              Facebook
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-only outline color="dark" block icon-start>
+              <ion-icon name="logo-google" color="danger"></ion-icon>
+              Google
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <!-- Float the icon left
+
+
+ Float the icon right
+<button ion-button icon-end>
+  Right Icon
+  <ion-icon name="home"></ion-icon>
+</button>
+
+Only icon (no text)
+<button ion-button icon-only>
+  <ion-icon name="home"></ion-icon>
+</button>
+-->
+    </div>
+
+
+    <!-- Other links
+    <div text-center margin-top>
+      <span ion-text color="dark" tappable (click)="register()">New here? <strong>Sign up</strong></span>
+    </div>
+    -->
+  </div>
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-menu id="myMenu" [content]="content">
+  <ion-header>
+    <ion-toolbar color="primary" align-title="center">
+      <ion-item color="primary">
+        <div item-start >
+          <img class="circle-pic" (click)="abrirPagina(cuenta)" [src]="usuario.foto">
+        </div>
+        <ion-title>{{usuario.nombre}} {{usuario.apellidos}}</ion-title>
+      </ion-item>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="abrirPagina(mis_servicios)">
+        <ion-icon #prueba name="clipboard"></ion-icon> Mis servicios
+      </button>
+      <button ion-item (click)="abrirPagina(paseo)">
+        <ion-icon name="walk"></ion-icon> Paseo
+      </button>
+      <button ion-item (click)="abrirPagina(pension)">
+        <ion-icon name="home"></ion-icon> Pensión
+      </button>
+      <button ion-item (click)="abrirPagina(estetica)">
+        <ion-icon name="cut"></ion-icon> Estetica
+      </button>
+      <button ion-item disabled="true">
+      </button>
+      <button ion-item (click)="cerrarSesion()">
+        <ion-icon name="log-out"></ion-icon> Cerrar Sesión
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #content [root]="rootPage"></ion-nav>

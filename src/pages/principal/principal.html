@@ -1,0 +1,32 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Bienvenido</ion-title>
+    <ion-buttons left>
+      <button ion-button icon-only (click)="mostrar_menu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+
+  <ion-item>
+    <ion-avatar item-start>
+      <img [src]="usuario.foto">
+    </ion-avatar>
+    <h2 #prueba>¡Hola {{usuario.nombre}}! ¿Cómo estas?</h2>
+    <p>{{fecha}}</p>
+  </ion-item>
+
+  <img [src]="principal.foto">
+
+  <ion-card-content>
+    <p>
+      {{principal.dato}}
+    </p>
+  </ion-card-content>
+  </ion-card>
+</ion-content>

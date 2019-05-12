@@ -1,0 +1,23 @@
+
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="salir()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-buttons>
+    <ion-list-header>
+      {{info}}
+    </ion-list-header>
+    <ion-input placeholder="  Editar" class="form-control" [(ngModel)]="actualizacion"></ion-input>
+    <button ion-button block (click)="actualizar()" [disabled]="actualizacion == null" color="verde">
+      Guardar
+    </button>
+  </ion-buttons>
+</ion-content>

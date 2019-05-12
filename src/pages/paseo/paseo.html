@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Paseo</ion-title>
+<!--    <ion-buttons left>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+-->  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-fab right middle>
+  <button ion-fab color="dark"><ion-icon name="add"></ion-icon></button>
+  <ion-fab-list side="top">
+    <button ion-fab color="dark"><ion-icon name="calendar"></ion-icon></button>
+    <button ion-fab color="dark"><ion-icon name="videocam"></ion-icon></button>
+    <button ion-fab color="dark"><ion-icon name="camera"></ion-icon></button>
+  </ion-fab-list>
+</ion-fab>
+    <agm-map [latitude]="usuario.lat" [longitude]="usuario.lng" [zoom]="15">
+      <agm-marker [latitude]="usuario.lat" [longitude]="usuario.lng" [iconUrl]="'../../assets/imgs/huellita3.png'"></agm-marker>
+    </agm-map>
+
+</ion-content>

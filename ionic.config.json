@@ -1,0 +1,7 @@
+{
+  "name": "ttr",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
